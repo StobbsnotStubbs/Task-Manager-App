@@ -11,9 +11,11 @@ function TaskDisplayer(req, res) {
       });
   }, []);
   return (
-    <div>
+    <div style={{ margin: "2% auto 7%", width: "70%" }}>
       {tasks.map((task) => (
-        <TaskCard />
+        <div style={{ padding: "10px" }}>
+          <TaskCard />
+        </div>
       ))}
     </div>
   );
