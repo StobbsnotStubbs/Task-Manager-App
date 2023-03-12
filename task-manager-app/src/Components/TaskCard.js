@@ -3,28 +3,36 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-function TaskCard() {
+function TaskCard(props) {
+  const taskTitle = props.taskTitle;
+  const user = props.user;
+  const dueDate = props.dueDate;
+  const priorityLevel = props.priorityLevel;
+  const description = props.description;
+  const status = props.status;
+  //const createdAt = props.createdAt.replace(/(T)/, " ");
+  //const updatedAt = props.updatedAt;
+
   return (
     <Row xs={"auto"} md={"auto"} lg={"auto"} xl={"auto"} className="g-4">
       {Array.from({ length: 4 }).map((_, idx) => (
         <Col>
           <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
+              <Card.Title>TEST{taskTitle}</Card.Title>
+              <Card.Text>TEST{description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+              <ListGroup.Item>Assigned to:{user}</ListGroup.Item>
+              <ListGroup.Item>Priority:{priorityLevel}</ListGroup.Item>
+              <ListGroup.Item>Status:{status}</ListGroup.Item>
+              <ListGroup.Item>Due Date:{dueDate}</ListGroup.Item>
+              {/* <ListGroup.Item>Created At:{createdAt}</ListGroup.Item> */}
+              {/* <ListGroup.Item>Updated At:{updatedAt}</ListGroup.Item> */}
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
+              <Card.Link href="#">Edit</Card.Link>
+              <Card.Link href="#">Delete</Card.Link>
             </Card.Body>
           </Card>
         </Col>
