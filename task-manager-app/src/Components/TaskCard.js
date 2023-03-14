@@ -14,8 +14,9 @@ function TaskCard(props) {
   //const updatedAt = props.updatedAt;
 
   return (
-    <Row xs={"auto"} md={"auto"} lg={"auto"} xl={"auto"} className="g-4">
-      {Array.from({ length: 4 }).map((_, idx) => (
+    // <Row xs={"1"} md={"1"} lg={"2"} xl={"3"} className="g-4">
+    <div>
+      {Array.from({ length: 1 }).map((_, idx) => (
         <Col>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
@@ -37,7 +38,9 @@ function TaskCard(props) {
           </Card>
         </Col>
       ))}
-    </Row>
+    </div>
+
+    // </Row>
   );
 }
 

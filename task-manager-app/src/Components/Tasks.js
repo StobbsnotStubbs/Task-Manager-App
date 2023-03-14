@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 
-function TaskDisplayer(req, res) {
+const TaskDisplayer = () => {
   const [tasks, setTasks] = useState([]);
+  const SERVER = process.env.REACT_APP_SERVER;
+
   useEffect(() => {
-    fetch(`http://localhost:3001/taskmanager/get-tasks`)
+    fetch(`${SERVER}/taskmanager/get-tasks`)
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);
       });
-  }, [tasks]);
+  }, [SERVER]);
 
   return (
-    <div style={{ margin: "2% auto 7%", width: "70%" }}>
+    <div style={{ margin: "2rem auto 3rem auto", width: "70%", display: "flex", flexWrap: "wrap" }}>
       {tasks.map((task) => (
-        <div style={{ padding: "10px" }}>
+        <div key={task._id} style={{ padding: "10px" }}>
           <TaskCard
-            key={task.id}
+            key={task._id}
             taskTitle={task.taskTitle}
             user={task.user}
             dueDate={task.dueDate}
@@ -30,6 +32,6 @@ function TaskDisplayer(req, res) {
       ))}
     </div>
   );
-}
+};
 
 export default TaskDisplayer;
