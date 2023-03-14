@@ -2,8 +2,14 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import deleteTask from "./DeleteTask";
+import EditModalButton from "./EditButton";
+import AddModalButton from "./AddButton";
+
 
 function TaskCard(props) {
+  const id = props.id;
   const taskTitle = props.taskTitle;
   const user = props.user;
   const dueDate = props.dueDate;
@@ -13,14 +19,16 @@ function TaskCard(props) {
   //const createdAt = props.createdAt.replace(/(T)/, " ");
   //const updatedAt = props.updatedAt;
 
+
   return (
-    <Row xs={"auto"} md={"auto"} lg={"auto"} xl={"auto"} className="g-4">
-      {Array.from({ length: 4 }).map((_, idx) => (
+    // <Row xs={"1"} md={"1"} lg={"2"} xl={"3"} className="g-4">
+    <div>
+      {Array.from({ length: 1 }).map((_, idx) => (
         <Col>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
-              <Card.Title>TEST{taskTitle}</Card.Title>
-              <Card.Text>TEST{description}</Card.Text>
+              <Card.Title>{taskTitle}</Card.Title>
+              <Card.Text>{description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroup.Item>Assigned to:{user}</ListGroup.Item>
@@ -31,13 +39,16 @@ function TaskCard(props) {
               {/* <ListGroup.Item>Updated At:{updatedAt}</ListGroup.Item> */}
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#">Edit</Card.Link>
-              <Card.Link href="#">Delete</Card.Link>
+              {/* <Button onClick={handleEditCLick} >Edit</Button> */}
+              <EditModalButton taskTitle= {taskTitle} ></EditModalButton>
+              <Button onClick={() => deleteTask(id)}>Delete</Button>
             </Card.Body>
           </Card>
         </Col>
       ))}
-    </Row>
+    </div>
+
+    // </Row>
   );
 }
 

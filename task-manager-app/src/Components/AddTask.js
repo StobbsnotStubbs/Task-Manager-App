@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-
-const addTask = async (props) => {
-  const [tasks, setTasks] = useState([]);
-  const data = await fetch("https://localhost:3001/taskmanager/add", {
+const addTask = (title, user, dueDate, priorityLevel, description) => {
+  const SERVER = process.env.REACT_APP_SERVER;
+  fetch(`${SERVER}/taskmanager/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      taskTitle: props.title,
-      user: props.user,
-      dueDate: props.dueDate,
-      priorityLevel: props.priorityLevel,
-      description: props.description,
+      taskTitle: title,
+      user: user,
+      dueDate: dueDate,
+      priorityLevel: priorityLevel,
+      description: description,
     }),
-  }).then((response) => response.json());
-  setTasks([...tasks, data]);
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
 };
 
 export default addTask;
