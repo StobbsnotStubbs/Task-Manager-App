@@ -2,8 +2,11 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import deleteTask from "./DeleteTask";
 
 function TaskCard(props) {
+  const id = props.id;
   const taskTitle = props.taskTitle;
   const user = props.user;
   const dueDate = props.dueDate;
@@ -20,8 +23,8 @@ function TaskCard(props) {
         <Col>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
-              <Card.Title>TEST{taskTitle}</Card.Title>
-              <Card.Text>TEST{description}</Card.Text>
+              <Card.Title>{taskTitle}</Card.Title>
+              <Card.Text>{description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroup.Item>Assigned to:{user}</ListGroup.Item>
@@ -32,8 +35,8 @@ function TaskCard(props) {
               {/* <ListGroup.Item>Updated At:{updatedAt}</ListGroup.Item> */}
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#">Edit</Card.Link>
-              <Card.Link href="#">Delete</Card.Link>
+              <Button >Edit</Button>
+              <Button onClick={() => deleteTask(id)}>Delete</Button>
             </Card.Body>
           </Card>
         </Col>
