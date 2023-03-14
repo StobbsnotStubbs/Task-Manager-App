@@ -7,7 +7,6 @@ import deleteTask from "./DeleteTask";
 import EditModalButton from "./EditButton";
 import AddModalButton from "./AddButton";
 
-
 function TaskCard(props) {
   const id = props.id;
   const taskTitle = props.taskTitle;
@@ -16,13 +15,13 @@ function TaskCard(props) {
   const priorityLevel = props.priorityLevel;
   const description = props.description;
   const status = props.status;
+  const setTasks = props.setTasks;
   //const createdAt = props.createdAt.replace(/(T)/, " ");
   //const updatedAt = props.updatedAt;
 
-
   return (
     // <Row xs={"1"} md={"1"} lg={"2"} xl={"3"} className="g-4">
-    <div>
+    <div >
       {Array.from({ length: 1 }).map((_, idx) => (
         <Col>
           <Card style={{ width: "18rem" }}>
@@ -31,17 +30,24 @@ function TaskCard(props) {
               <Card.Text>{description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>Assigned to:{user}</ListGroup.Item>
-              <ListGroup.Item>Priority:{priorityLevel}</ListGroup.Item>
-              <ListGroup.Item>Status:{status}</ListGroup.Item>
-              <ListGroup.Item>Due Date:{dueDate}</ListGroup.Item>
+              <ListGroup.Item>Assigned to: {user}</ListGroup.Item>
+              <ListGroup.Item>Priority: {priorityLevel}</ListGroup.Item>
+              <ListGroup.Item>Status: {status}</ListGroup.Item>
+              <ListGroup.Item>Due Date: {dueDate}</ListGroup.Item>
               {/* <ListGroup.Item>Created At:{createdAt}</ListGroup.Item> */}
               {/* <ListGroup.Item>Updated At:{updatedAt}</ListGroup.Item> */}
             </ListGroup>
             <Card.Body>
               {/* <Button onClick={handleEditCLick} >Edit</Button> */}
-              <EditModalButton taskTitle= {taskTitle} ></EditModalButton>
-              <Button onClick={() => deleteTask(id)}>Delete</Button>
+              <EditModalButton
+                taskTitle={taskTitle}
+                description={description}
+                user={user}
+                priorityLevel={priorityLevel}
+                dueDate={dueDate}
+                id={props.key}
+              ></EditModalButton>
+              <Button onClick={() => deleteTask(id, setTasks)}>Delete</Button>
             </Card.Body>
           </Card>
         </Col>
