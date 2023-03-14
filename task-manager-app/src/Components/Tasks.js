@@ -14,9 +14,19 @@ const TaskDisplayer = () => {
   }, [SERVER]);
 
   return (
-    <div style={{ margin: "2rem auto 3rem auto", width: "70%", display: "flex", flexWrap: "wrap" }}>
+    <div
+      style={{
+        margin: "2rem auto 3rem auto",
+        width: "70%",
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
       {tasks.map((task) => (
-        <div key={task._id} style={{ padding: "10px" }}>
+        <div
+          key={task._id}
+          style={{ padding: "10px" }}
+        >
           <TaskCard
             key={task._id}
             taskTitle={task.taskTitle}

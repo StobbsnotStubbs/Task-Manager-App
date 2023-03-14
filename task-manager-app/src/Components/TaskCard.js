@@ -20,8 +20,8 @@ function TaskCard(props) {
         <Col>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
-              <Card.Title>TEST{taskTitle}</Card.Title>
-              <Card.Text>TEST{description}</Card.Text>
+              <Card.Title>{taskTitle}</Card.Title>
+              <Card.Text>{description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroup.Item>Assigned to:{user}</ListGroup.Item>
