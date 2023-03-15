@@ -1,10 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { Auth0Provider } from "@auth0/auth0-react";
 
-ReactDOM.render(
+const rootElement = document.getElementById("root");
+
+ReactDOM.createRoot(rootElement).render(
   <Auth0Provider
     domain="leoktay.eu.auth0.com"
     clientId="BUJgIkrtValN60dVOBz7jmHQCgufYYoM"
@@ -13,6 +15,5 @@ ReactDOM.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </Auth0Provider>,
-  document.getElementById("root")
+  </Auth0Provider>
 );

@@ -1,4 +1,4 @@
-const deleteTask = (taskId) => {
+const deleteTask = (taskId, setTasks) => {
   const SERVER = process.env.REACT_APP_SERVER;
 
   fetch(`${SERVER}/taskmanager/delete-tasks/${taskId}`, {
@@ -7,6 +7,7 @@ const deleteTask = (taskId) => {
     .then((response) => {
       if (response.ok) {
         console.log("Task deleted successfully");
+        setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
       } else {
         console.log("Task not deleted");
       }
