@@ -45,7 +45,7 @@ function TaskCard(props) {
                 user={user}
                 priorityLevel={priorityLevel}
                 dueDate={dueDate}
-                id={props.key}
+                id={id}
               ></EditModalButton>
               <Button onClick={() => deleteTask(id, setTasks)}>Delete</Button>
             </Card.Body>
