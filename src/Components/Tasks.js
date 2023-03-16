@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import { useUser } from "./UserProvider";
+// import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 const TaskDisplayer = () => {
   const [tasks, setTasks] = useState([]);
@@ -16,9 +17,19 @@ const TaskDisplayer = () => {
       });
   }, [SERVER, user]);
   return (
-    <div style={{ margin: "2rem auto 3rem auto", width: "70%", display: "flex", flexWrap: "wrap" }}>
+    <div
+      style={{
+        margin: "2rem auto 3rem auto",
+        width: "70%",
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
       {tasks.map((task) => (
-        <div key={task._id} style={{ padding: "10px" }}>
+        <div
+          key={task._id}
+          style={{ padding: "10px" }}
+        >
           <TaskCard
             id={task._id}
             taskTitle={task.taskTitle}

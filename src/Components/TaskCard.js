@@ -5,7 +5,6 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import deleteTask from "./DeleteTask";
 import EditModalButton from "./EditButton";
-import AddModalButton from "./AddButton";
 
 function TaskCard(props) {
   const id = props.id;
@@ -21,7 +20,7 @@ function TaskCard(props) {
 
   return (
     // <Row xs={"1"} md={"1"} lg={"2"} xl={"3"} className="g-4">
-    <div >
+    <div>
       {Array.from({ length: 1 }).map((_, idx) => (
         <Col>
           <Card style={{ width: "18rem" }}>
@@ -47,7 +46,12 @@ function TaskCard(props) {
                 dueDate={dueDate}
                 id={id}
               ></EditModalButton>
-              <Button onClick={() => deleteTask(id, setTasks)}>Delete</Button>
+              <Button
+                style={{ marginLeft: "5px" }}
+                onClick={() => deleteTask(id, setTasks)}
+              >
+                Delete
+              </Button>
             </Card.Body>
           </Card>
         </Col>

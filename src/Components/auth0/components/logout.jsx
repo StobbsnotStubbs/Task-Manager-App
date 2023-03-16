@@ -1,6 +1,6 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import Button from "react-bootstrap/esm/Button";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const LogoutButton = () => {
   const { logout, isAuthenticated } = useAuth0();
@@ -8,9 +8,11 @@ const LogoutButton = () => {
   return (
     isAuthenticated && (
       <Button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
+        onClick={async () => {
+          await logout({
+            returnTo: "http://localhost:3000/",
+          });
+        }}
       >
         Log Out
       </Button>
