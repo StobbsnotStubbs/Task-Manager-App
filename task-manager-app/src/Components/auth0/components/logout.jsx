@@ -4,17 +4,11 @@ import Button from "react-bootstrap/esm/Button";
 const LogoutButton = () => {
   const { logout, isAuthenticated } = useAuth0();
 
-  return (
-    isAuthenticated && (
-      <Button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-      >
-        Log Out
-      </Button>
-    )
-  );
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    logout({ returnTo: window.location.origin });
+  };
+  return isAuthenticated && <Button onClick={handleLogout}>Log Out</Button>;
 };
 
 export default LogoutButton;

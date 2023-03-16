@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
+import { useAuth } from "../Context";
 
 const TaskDisplayer = () => {
   const [tasks, setTasks] = useState([]);
+
   const SERVER = process.env.REACT_APP_SERVER;
 
-  useEffect((tasks) => {
-    fetch(`${SERVER}/taskmanager/get-tasks`)
-      .then((res) => res.json())
-      .then((data) => {
+  useAuth();
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`${SERVER}/taskmanager/get-tasks`);
+        const data = await response.json();
         setTasks(data);
-      });
-  }, [SERVER, tasks]);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [SERVER]);
 
   return (
     <div
