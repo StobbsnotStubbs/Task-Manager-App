@@ -16,7 +16,14 @@ const TaskDisplayer = () => {
       });
   }, [SERVER, user]);
   return (
-    <div style={{ margin: "2rem auto 3rem auto", width: "70%", display: "flex", flexWrap: "wrap" }}>
+    <div
+      style={{
+        margin: "2rem auto 3rem auto",
+        width: "70%",
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
       {tasks.map((task) => (
         <div key={task._id} style={{ padding: "10px" }}>
           <TaskCard
@@ -28,8 +35,8 @@ const TaskDisplayer = () => {
             description={task.description}
             status={task.status}
             setTasks={setTasks}
-            //createdAt={task.createdAt}
-            //updatedAt={task.updatedAt}
+            createdAt={task.createdAt}
+            updatedAt={task.updatedAt}
           />
         </div>
       ))}

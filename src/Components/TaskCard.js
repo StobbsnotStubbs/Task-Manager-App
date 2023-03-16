@@ -16,14 +16,20 @@ function TaskCard(props) {
   const description = props.description;
   const status = props.status;
   const setTasks = props.setTasks;
-  //const createdAt = props.createdAt.replace(/(T)/, " ");
-  //const updatedAt = props.updatedAt;
+  const createdAt = props.createdAt
+    .replace("T", " ")
+    .replace("Z", " ")
+    .slice(0, -5);
+  const updatedAt = props.updatedAt
+    .replace("T", " ")
+    .replace("Z", " ")
+    .slice(0, -5);
 
   return (
     // <Row xs={"1"} md={"1"} lg={"2"} xl={"3"} className="g-4">
-    <div >
+    <div>
       {Array.from({ length: 1 }).map((_, idx) => (
-        <Col>
+        <Col key={idx}>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
               <Card.Title>{taskTitle}</Card.Title>
@@ -34,8 +40,8 @@ function TaskCard(props) {
               <ListGroup.Item>Priority: {priorityLevel}</ListGroup.Item>
               <ListGroup.Item>Status: {status}</ListGroup.Item>
               <ListGroup.Item>Due Date: {dueDate}</ListGroup.Item>
-              {/* <ListGroup.Item>Created At:{createdAt}</ListGroup.Item> */}
-              {/* <ListGroup.Item>Updated At:{updatedAt}</ListGroup.Item> */}
+              {<ListGroup.Item>Created At: {createdAt}</ListGroup.Item>}
+              {<ListGroup.Item>Updated At: {updatedAt}</ListGroup.Item>}
             </ListGroup>
             <Card.Body>
               {/* <Button onClick={handleEditCLick} >Edit</Button> */}
