@@ -4,9 +4,11 @@ import AddModalButton from "./AddButton";
 import LoginButton from "./auth0/components/login";
 import Profile from "./auth0/components/profile";
 import LogoutButton from "./auth0/components/logout";
+import { useAuth0 } from "@auth0/auth0-react";
 //change signed in as
 
 function Header() {
+  const { isAuthenticated } = useAuth0();
   return (
     <Navbar
       bg="dark"
@@ -17,7 +19,7 @@ function Header() {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text style={{ paddingRight: "10px" }}>
-            <AddModalButton></AddModalButton>
+            {isAuthenticated && <AddModalButton />}
           </Navbar.Text>
           <Navbar.Text style={{ display: "flex", gap: "10px" }}>
             <LoginButton />

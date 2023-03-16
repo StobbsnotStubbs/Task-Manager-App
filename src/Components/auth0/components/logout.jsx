@@ -8,8 +8,8 @@ const LogoutButton = () => {
   return (
     isAuthenticated && (
       <Button
-        onClick={async () => {
-          await logout({
+        onClick={() => {
+          logout({
             returnTo: "http://localhost:3000/",
           });
         }}

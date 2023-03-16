@@ -6,26 +6,40 @@ import TaskDisplayer from "./Components/Tasks";
 import { UserProvider } from "./Components/UserProvider";
 import { useEffect, useState } from "react";
 import { initAuth0 } from "./Components/auth0/components/initAuth0";
-import LogoutButton from "./Components/auth0/components/logout";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function App() {
+async function App() {
   const [auth0, setAuth0] = useState(null);
-
+  const { isAuthenticated } = useAuth0();
   useEffect(() => {
-    const initializeAuth0 = async () => {
+    const initialiseAuth0 = async () => {
       const auth0Instance = await initAuth0();
       setAuth0(auth0Instance);
     };
-    initializeAuth0();
+    initialiseAuth0();
   }, []);
-
   return (
     <div>
       <UserProvider auth0={auth0}>
-        <Header />
-        <TaskDisplayer />
-        <Footer />
-        <LogoutButton auth0={auth0} />
+        {isAuthenticated ? (
+          <div>
+            <Header />
+            <TaskDisplayer />
+            <Footer />
+          </div>
+        ) : (
+          <div>
+            <Header />
+            <div
+              style={{
+                textAlign: "center",
+              }}
+            >
+              Please log in
+            </div>
+            <Footer />
+          </div>
+        )}
       </UserProvider>
     </div>
   );

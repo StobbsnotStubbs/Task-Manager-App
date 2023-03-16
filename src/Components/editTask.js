@@ -1,4 +1,11 @@
-const editTask = (taskId, taskTitle, user, dueDate, priorityLevel, description) => {
+const editTask = (
+  taskId,
+  taskTitle,
+  user,
+  dueDate,
+  priorityLevel,
+  description
+) => {
   const SERVER = process.env.REACT_APP_SERVER;
 
   fetch(`${SERVER}/taskmanager/updateTask/${taskId}`, {
@@ -25,5 +32,4 @@ const editTask = (taskId, taskTitle, user, dueDate, priorityLevel, description) 
   return <div></div>;
 };
 
- 
 export default editTask;

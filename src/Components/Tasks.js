@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import { useUser } from "./UserProvider";
-// import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 const TaskDisplayer = () => {
   const [tasks, setTasks] = useState([]);
